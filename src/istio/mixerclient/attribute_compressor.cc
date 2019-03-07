@@ -159,7 +159,7 @@ class BatchCompressorImpl : public BatchCompressor {
 
 }  // namespace
 
-GlobalDictionary::GlobalDictionary() {
+GlobalDictionary::GlobalDictionary() : global_dict_(GetGlobalDictionary()) {
   const std::vector<std::string>& global_words = GetGlobalWords();
   for (unsigned int i = 0; i < global_words.size(); i++) {
     global_dict_[global_words[i]] = i;
