@@ -359,7 +359,7 @@ class Server : public Envoy::Network::FilterChainManager,
 
   virtual const std::string &name() const override;
 
-  virtual bool reverseWriteFilterOrder() const override;
+  virtual bool reverseWriteFilterOrder() const;
 
   //
   // Envoy::Network::FilterChainManager
