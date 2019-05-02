@@ -38,12 +38,19 @@ bind(
 ENVOY_SHA = "925810d00b0d3095a8e67fd4e04e0f597ed188bb"
 ENVOY_SHA256 = "26d1f14e881455546cf0e222ec92a8e1e5f65cb2c5761d63c66598b39cd9c47d"
 
-http_archive(
-    name = "envoy",
-    strip_prefix = "envoy-" + ENVOY_SHA,
-    url = "https://github.com/envoyproxy/envoy/archive/" + ENVOY_SHA + ".tar.gz",
-    sha256 = ENVOY_SHA256,
-)
+LOCAL_ENVOY_PROJECT = "/home/lambdai/workspace/envoy"
+
+
+#http_archive(
+#    name = "envoy",
+#    strip_prefix = "envoy-" + ENVOY_SHA,
+#    url = "https://github.com/envoyproxy/envoy/archive/" + ENVOY_SHA + ".tar.gz",
+#    sha256 = ENVOY_SHA256,
+#)
+local_repository(
+	     name = "envoy",
+	     path = LOCAL_ENVOY_PROJECT,
+)		
 
 load("@envoy//bazel:repositories.bzl", "envoy_dependencies")
 envoy_dependencies()
