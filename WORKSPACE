@@ -43,19 +43,19 @@ ENVOY_SHA256 = "e3f7a59e696c8b9a1842d6a826adee5c265115ec1d21ae8f39c1434b0bd41241
 
 LOCAL_ENVOY_PROJECT = "/PATH/TO/ENVOY"
 
-http_archive(
-    name = "envoy",
-    sha256 = ENVOY_SHA256,
-    strip_prefix = "envoy-" + ENVOY_SHA,
-    url = "https://github.com/istio/envoy/archive/" + ENVOY_SHA + ".tar.gz",
-)
+#http_archive(
+#    name = "envoy",
+#    sha256 = ENVOY_SHA256,
+#    strip_prefix = "envoy-" + ENVOY_SHA,
+#    url = "https://github.com/istio/envoy/archive/" + ENVOY_SHA + ".tar.gz",
+#)
 
 # TODO(silentdai) Use bazel args to select envoy between local or http
 # Uncomment below and comment above http_archive to depends on local envoy.
-#local_repository(
-#     name = "envoy",
-#     path = LOCAL_ENVOY_PROJECT,
-#)
+local_repository(
+     name = "envoy",
+     path = "/home/lambdai/go/src/istio.io/envoy"
+)
 
 load("@envoy//bazel:api_binding.bzl", "envoy_api_binding")
 
